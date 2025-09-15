@@ -72,7 +72,8 @@
 (defun selected-off ()
   "Disable bindings in `selected-keymap' temporarily."
   (interactive)
-  (selected-region-active-mode -1))
+  (selected-region-active-mode -1)
+  (when (memq this-command '(kill-ring-save lambda)) (setq deactivate-mark nil)))
 
 ;;;###autoload
 (define-minor-mode selected-minor-mode
